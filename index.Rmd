@@ -1,0 +1,55 @@
+---
+title       : Course 9 Week 3
+subtitle    : 
+author      : Ron Vaughan
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+# output      : ioslides_presentation
+knit        : slidify::knit2slides
+---
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r replicate_regression_data, echo=FALSE, warning = FALSE, message = FALSE}
+data("mtcars")
+
+mtcars$cyl <- factor(mtcars$cyl)
+mtcars$vs <- factor(mtcars$vs)
+mtcars$am <- factor(mtcars$am, labels=c("Automatic","Manual"))
+mtcars$gear <- factor(mtcars$gear)
+mtcars$carb <- factor(mtcars$carb)
+
+library(plotly)
+```
+
+## Introduction
+
+The point of this project is to demonstrate the ability to use plotly and create a published slide deck.  To meet this objective, I have replicated one of the slides from the Regressioni prooject.  The command to display the boxplot, after the data has been loaded and converted to factors, when using nornmal R processing is  
+
+'boxplot(mpg ~ am, data=mtcars, col = (c("blue","green")), ylab = "Miles per Gallon (MPG)", xlab = "Transmission Types")'.  
+  
+The plotly version is 'plot_ly(mtcars, x = ~am, y = ~mpg, color = ~am, type="box")'.
+
+---
+## Replicated Plot
+
+```{r plot, warning = FALSE}
+plot_ly(mtcars, x = ~am, y = ~mpg, color = ~am, type="box")
+
+```
+
+---
+## Data source
+
+The data source is 'mtcars'
+
+
+
+
+
